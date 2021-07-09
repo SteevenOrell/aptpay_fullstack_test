@@ -79,12 +79,13 @@ protected $currencyArr = ["AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD"
 
 
               if(is_null( $request->input('instrumentId')) && is_null($request->input('disbursementNumber'))){
-                      array_push($paramsErrors,"Instrument Id or Disbursement number required") ;
+                      array_push($paramsErrors,"Instrument Id or Disbursement number required");
                   }
 
 
            if($request->input('transactionType')  === "CARD" 
               && is_null($request->input('expirationDate')) 
+              || $request->input('transactionType')  === "CARD" 
               && is_null($request->input('network'))){
                   //take all errors to display to the view if there are
                  array_push($paramsErrors,"Expiry date and Network required");
